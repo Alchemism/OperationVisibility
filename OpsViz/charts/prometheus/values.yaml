@@ -1535,6 +1535,23 @@ serverFiles:
             action: replace
             target_label: kubernetes_pod_name
 
+      - job_name: 'elasticsearch'
+
+        scrape_interval: 2m
+        scrape_timeout: 30s
+
+        static_configs:
+          - targets: ['elasticsearch-exporter.logging.svc:9108']
+
+
+      - job_name: 'redis'
+
+        scrape_interval: 2m
+        scrape_timeout: 30s
+
+        static_configs:
+          - targets: ['redis-exporter-prometheus-redis-exporter.default.svc:9121']
+
 # adds additional scrape configs to prometheus.yml
 # must be a string so you have to add a | after extraScrapeConfigs:
 # example adds prometheus-blackbox-exporter scrape config
